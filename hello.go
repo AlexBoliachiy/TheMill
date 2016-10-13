@@ -151,7 +151,6 @@ func (gm *singleton) CheckThird() int {
 			continue
 		} else if nests[gm.prevPlaceX][y] != side {
 			counter = 0
-			break
 		} else if nests[gm.prevPlaceX][y] == side {
 			counter++
 		} else {
@@ -165,11 +164,11 @@ func (gm *singleton) CheckThird() int {
 	for x := 0; x < 7; x++ {
 		if nests[x][gm.prevPlaceY] == 2 {
 			counter = 0
+			panic(counter)
 		} else if nests[x][gm.prevPlaceY] == 0 {
 			continue
 		} else if nests[x][gm.prevPlaceY] != side {
 			counter = 0
-			break
 		} else if nests[x][gm.prevPlaceY] == side {
 			counter++
 		} else {
