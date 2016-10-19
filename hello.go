@@ -4,7 +4,6 @@ import tl "github.com/JoelOtter/termloop"
 import "math"
 
 func main() {
-
 	game := tl.NewGame()
 	level := tl.NewBaseLevel(tl.Cell{
 		Bg: tl.ColorYellow,
@@ -147,6 +146,10 @@ func (gm *singleton) CheckThird() int {
 	for y := 0; y < 7; y++ {
 		if nests[gm.prevPlaceX][y] == 2 {
 			counter = 0
+			if nests[gm.prevPlaceX][y-1] == side && counter == 3 {
+				counter = 3
+				break
+			}
 		} else if nests[gm.prevPlaceX][y] == 0 {
 			continue
 		} else if nests[gm.prevPlaceX][y] != side {
@@ -163,8 +166,11 @@ func (gm *singleton) CheckThird() int {
 	counter = 0
 	for x := 0; x < 7; x++ {
 		if nests[x][gm.prevPlaceY] == 2 {
+			if nests[x-1][gm.prevPlaceY] == side && counter == 3 {
+				counter = 3
+				break
+			}
 			counter = 0
-			panic(counter)
 		} else if nests[x][gm.prevPlaceY] == 0 {
 			continue
 		} else if nests[x][gm.prevPlaceY] != side {
